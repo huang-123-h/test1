@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="jquery-1.12.1.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        .wrap{
+            width: 330px;
+            height: 30px;
+            margin: 100px auto 0;
+            padding-left: 10px;
+            background-color: pink;
+        }
+        .wrap li{
+            background-color: green;
+        }
+        .wrap>ul>li{
+            float: left;
+            margin-right: 10px;
+            position: relative;
+        }
+        .wrap a{
+            display: block;
+            height:30px;
+            line-height: 30px;
+            width:100px;
+            text-decoration: none;
+            color: #fff;
+            text-align: center;
+        }
+        .wrap li ul{
+            position: absolute;
+            top: 30px;
+           display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <ul>
+        <li><a href="#">海贼王</a>
+            <ul>
+                <li><a href="#">路飞</a></li>
+                <li><a href="#">索隆</a></li>
+                <li><a href="#">山治</a></li>
+            </ul>
+        </li>
+        <li><a href="#">火影忍者</a>
+            <ul>
+                <li><a href="#">鸣人</a></li>
+                <li><a href="#">卡卡西</a></li>
+                <li><a href="#">佐助</a></li>
+            </ul>
+        </li>
+        <li><a href="#">王者荣耀</a>
+            <ul>
+                <li><a href="#">鲁班</a></li>
+                <li><a href="#">后裔</a></li>
+                <li><a href="#">兰陵王</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<!--js代码-->
+<script>
+    $(function () {
+       //获取当前的li中所有的子元素，然后注册鼠标进入和鼠标离开事件
+        //得到的是第一个li   .wrap>ul>li
+        //得到的是第二个li   .wrap>ul>li>ul>li
+        $(".wrap>ul>li").mouseenter(function () {
+           //当前的li中所有的子元素ul，再从子元素中
+         // $(this).css("backgroundColor","yellow");
+           $(this).children("ul").stop().show(200);
+        });
+        $(".wrap>ul>li").mouseleave(function () {
+            //当前的li中所有的子元素ul，再从子元素中
+            // $(this).css("backgroundColor","yellow");
+            $(this).children("ul").stop().hide(200);
+        });
+    });
+</script>
+</body>
+</html>
